@@ -105,3 +105,6 @@ venv.bak/
 
 # MAC OS File
 .DS_Store
+
+# Media
+*.mp3

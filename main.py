@@ -1,21 +1,22 @@
+# -*- coding: UTF-8 -*-
 """Google Cloud Text-To-Speech API sample application .
 Example usage:
-    python main.py --text "艾瑞克好棒棒"
+    python main.py -text "艾瑞克好棒棒"
 """
-import argparse
 import datetime
+from argparse import ArgumentParser
+from io import BytesIO
 
 from gtts import gTTS
 
 
 # [START tts_synthesize_text]
-def synthesize_text(text):
+def synthesize_text(text, name):
     tts=gTTS(text=text, lang='zh-TW')
     tts.save("".join(
             [
                 "output/",
-                str(datetime.datetime.now()),
-                str(text),
+                str(name),
                 ".mp3",
             ]
         )
@@ -23,11 +24,9 @@ def synthesize_text(text):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(
-        description=__doc__,
-        formatter_class=argparse.RawDescriptionHelpFormatter)
-    group = parser.add_mutually_exclusive_group(required=True)
-    group.add_argument('--text',
-                       help='The text from which to synthesize speech.')
+    parser = ArgumentParser()
+    parser.add_argument("-text", help="positional argument 1")
+    parser.add_argument("-fname", help="optional argument",)
     args = parser.parse_args()
-    synthesize_text(args.text)
+
+    synthesize_text(args.text, args.fname)
