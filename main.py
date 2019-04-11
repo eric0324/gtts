@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 """Google Cloud Text-To-Speech API sample application .
 Example usage:
-    python main.py -text "艾瑞克好棒棒"
+    python main.py -text "艾瑞克好棒棒" -fname "my_file_name"
 """
 import datetime
 from argparse import ArgumentParser
