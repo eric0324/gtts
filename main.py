@@ -4,6 +4,7 @@ Example usage:
     python main.py -text "艾瑞克好棒棒" -fname "my_file_name" -lang "zh-TW"
 """
 import datetime
+import subprocess
 from argparse import ArgumentParser
 from io import BytesIO
 
@@ -21,7 +22,7 @@ def synthesize_text(text, name, lang):
             ]
         )
     )
-
+    subprocess.call(["play", "output/"+str(name)+".mp3"])
 
 if __name__ == '__main__':
     parser = ArgumentParser()
